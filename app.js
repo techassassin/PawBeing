@@ -5,8 +5,8 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require('express-session');
-// const passport = require("passport");
-// const passportLocalMongoose = require("passport-local-mongoose");
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 
@@ -55,8 +55,8 @@ app.use(session({
   saveUninitialized: false
 }));
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 mongoose.connect("mongodb+srv://admin:admin@cluster0.dbo9h.mongodb.net/PostsDB", {useNewUrlParser : true});
 
@@ -81,20 +81,20 @@ const userSchema = new mongoose.Schema({
   secret: String
 });
 
-userSchema.plugin(passportLocalMongoose);
+// userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
-// passport.use(User.createStrategy());
-// passport.serializeUser(function(user, done) {
-//   done(null, user.id);
-// });
-//
-// passport.deserializeUser(function(id, done) {
-//   User.findById(id, function(err, user) {
-//     done(err, user);
-//   });
-// });
+passport.use(User.createStrategy());
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
 //
 // passport.use(new GoogleStrategy({
 //     clientID: process.env.CLIENT_ID,

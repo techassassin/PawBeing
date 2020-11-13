@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>PawBeing</title>
+
+   <!-- Favicon -->
+   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+
+ <!-- stylesheet -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/register.css">
+
+
+
+<!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@100&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/f8709f5bc8.js" crossorigin="anonymous"></script>
+
+</head>
+
+  <body>
+    <div id="Web_1280__1">
+  	<div id="horizontal-group">
+       <div id="Horizontal-big-box">
+         <div id="logo">
+           <span>PawBeing</span>
+         </div>
+         <div class="logo-text">
+           <p>A Trusted Community loved by Dog Owners.</p>
+         </div>
+           <div class="download-btn-row">
+             <button class="btn btn-md btn-dark Download-btn"  type="button"><i class="fab fa-apple"></i> Download</button>
+             <button class="btn btn-md btn-outline-light" type="button"><i class="fab fa-google-play"></i> Download</button>
+         </div>
+       </div>
+
+  	</div>
+    <div id="register-win">
+    	<div id="register_group">
+    		<svg class="Login-big-box">
+    			<rect id="Login-big-box" rx="10" ry="10" x="0" y="0" width="601" height="489">
+    			</rect>
+    		</svg>
+    		<div id="REGISTER">
+    			<span>REGISTER</span>
+    		</div>
+    		<div id="Please_fill_in_this_form_to_cr">
+    			<span>Please fill in this form to create an account.</span>
+    		</div>
+        <form action="/register" method="post">
+          <!-- <svg class="firstname">
+      			<rect id="firstname" rx="5" ry="5" x="0" y="0" width="235.5" height="35">
+      			</rect>
+      		</svg> -->
+          <input class="firstname" type="text" name="firstname" value="" placeholder="First Name">
+          <input class="lastname" type="text" name="firstname" value="" placeholder="Last Name">
+      	   <select class="gender" name="gender">
+             <option value="male">Male</option>
+             <option value="female">Female</option>
+             <option value="other">Other</option>
+           </select>
+           <input type="date" class="dob" name="dob" value="dob">
+           <input type="email" class="email" name="username" placeholder="email">
+           <input type="tel" name="contact" class="contact" placeholder="contact">
+      	   <input type="password" class="Password" name="password" placeholder="Password">
+           <button type="submit"  class="register-btn all-btn" name="button">Sign Up</button>
+
+        </form>
+
+        <a href="/auth/fb" class="fb-box">
+         <i class="fa fa-facebook fa-fw"></i> Sign Up with Facebook
+        </a>
+        <a href="/auth/google" class="google_box">
+          <i class="fa fa-google fa-fw"></i> Sign Up with Google
+       </a>
+
+    		<div id="Already_have_an_account_Sign_i">
+    			<span>Already have an account, <a href="/" style="text-decoration:underline;">Sign in.</a></span>
+    		</div>
+    	</div>
+</div>
+
+
+ </body>

@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<div class="container-blog-search">
+  <div class="row">
+    <div class="col-md-3">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Search By Author" class="search-by-author-text" name="" value="">
+      <div class="search-by-author">
+      </div>
+    </div>
+		<div class="col-md-3">
+			<i class="fas fa-search"></i>
+			<input type="text" placeholder="Search By Keyword" class="search-by-author-text" name="" value="">
+			<div class="search-by-author">
+			</div>
+		</div>
+		<div class="col-md-4"></div>
+		<div class="col-md-1">
+			</div>
+			<div class="col-md-1">
+				<button type="button" title="Create a New Blog" class="fas fa-plus-square btn-add-blog fa-2x" name="button"></button>
+				</div>
+  </div>
+</div>
+
+<% items.forEach(function(image) { %>
+<div id="blog">
+  <div id="blog-group">
+    <svg class="white-box">
+      <rect id="white-box" rx="10" ry="10" x="0" y="0" width="1082" height="160">
+      </rect>
+    </svg>
+    <img id="user-image" src="img/user-image.png">
+    <div id="user-name">
+      <span><%= image.username %></span>
+    </div>
+    <div id="post-time">
+      <span>09-11-2020 06:43 PM</span>
+    </div>
+    <div id="blog-post-title">
+      <span><%= image.name %></span>
+    </div>
+    <!-- <div id="post-body"> -->
+    <span id="post-body"><%= image.desc.substr(0,300) + "..."%> <a href="#" style="color: Blue">Read More</a></span>
+    <!-- </div> -->
+  </div>
+</div>
+
+<% }) %>
+
+
+<%- include('partials/footer') %>

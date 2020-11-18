@@ -1,0 +1,99 @@
+<%- include('partials/header') %>
+
+<div id="dog-detail">
+	<svg class="user-profile-grey-box-detail">
+		<rect id="user-profile-grey-box-detail" rx="10" ry="10" x="0" y="0" width="770" height="446">
+		</rect>
+	</svg>
+	<!-- <div class="modal-dog-img"> -->
+		<img class="modal-dog-img" src="data:image/<%=items.image.contentType%>;base64,<%=items.image.data.toString('base64')%>" alt="Dog Image">
+	<!-- </div> -->
+	<div id="modal-dog-name">
+      <%- items.dogName %>
+	</div>
+	<div id="Dog-details-group">
+		<div id="modal-Color">
+			<span>Color: </span><span style="font-style:normal;font-weight:bold;"><%- items.color %></span>
+		</div>
+		<div id="modal-breed-name">
+			<span>Breed: </span><span style="font-style:normal;font-weight:bold;"><%- items.breed %></span>
+		</div>
+		<div id="modal-gender">
+			<span>Gender: </span><span style="font-style:normal;font-weight:bold;"><%- items.gender %></span>
+		</div>
+		<div id="modal-age">
+			<span>Age: </span><span style="font-style:normal;font-weight:bold;"><%- items.age %></span>
+		</div>
+		<div id="modal-health">
+			<span>Health: </span><span style="font-style:normal;font-weight:bold;"><%- items.health %></span>
+		</div>
+		<div id="modal-location">
+			<span>Location: </span><span style="font-style:normal;font-weight:bold;"><%- items.city %></span><span>, </span><span style="font-style:normal;font-weight:bold;"><%- items.state %></span>
+		</div>
+		<div id="modal-Description">
+			<span>Description: </span><span style="font-style:normal;font-weight:bold;"><%- items.otherDetails %></span>
+		</div>
+		<div id="modal-date-posted">
+			<span>Date Posted: </span><span style="font-style:normal;font-weight:bold;"><%- items.PostTime %></span>
+		</div>
+	</div>
+	<div id="shop-group">
+		<svg class="Icon_awesome-cart-plus" viewBox="0 0 30 30">
+			<path id="Icon_awesome-cart-plus" d="M 26.28735160827637 18.75 L 11.01937770843506 18.75 L 11.36026382446289 20.625 L 25.34037208557129 20.625 C 26.14250564575195 20.625 26.73703956604004 21.46294784545898 26.55927848815918 22.34291076660156 L 26.27193450927734 23.76533126831055 C 27.24542427062988 24.29695320129395 27.91667556762695 25.41960906982422 27.91667556762695 26.71875 C 27.91667556762695 28.5469913482666 26.58756065368652 30.02601623535156 24.95709037780762 29.99964714050293 C 23.40380859375 29.97451019287109 22.12636184692383 28.55642318725586 22.08443260192871 26.80939292907715 C 22.0615177154541 25.85507583618164 22.40135955810547 24.99011611938477 22.95959091186523 24.37493896484375 L 12.04042053222656 24.37493896484375 C 12.58088970184326 24.97060585021973 12.91667079925537 25.80035209655762 12.91667079925537 26.71875 C 12.91667079925537 28.58279228210449 11.53500366210938 30.08384704589844 9.860939979553223 29.99636650085449 C 8.374481201171875 29.91872978210449 7.165574550628662 28.56755828857422 7.087449550628662 26.89576148986816 C 7.027137279510498 25.60470771789551 7.630990982055664 24.46675682067871 8.548439979553223 23.87314414978027 L 4.889740943908691 3.75 L 1.250000357627869 3.75 C 0.5596355795860291 3.75 0 3.120410203933716 0 2.34375 L 0 1.40625 C 0 0.629589855670929 0.5596355795860291 0 1.250000357627869 0 L 6.590054035186768 0 C 7.183856010437012 0 7.695679187774658 0.4699804782867432 7.814689159393311 1.124414086341858 L 8.292085647583008 3.75 L 28.74948883056641 3.75 C 29.5516242980957 3.75 30.14615440368652 4.587948799133301 29.9683952331543 5.467909812927246 L 27.50625801086426 17.65541076660156 C 27.37693405151367 18.29566383361816 26.87099838256836 18.75 26.28735160827637 18.75 Z M 21.2500057220459 9.84375 L 18.7500057220459 9.84375 L 18.7500057220459 7.5 C 18.7500057220459 6.982207298278809 18.37693214416504 6.5625 17.91667175292969 6.5625 L 17.08333778381348 6.5625 C 16.62307739257813 6.5625 16.25000381469727 6.982207298278809 16.25000381469727 7.5 L 16.25000381469727 9.84375 L 13.75000381469727 9.84375 C 13.28974342346191 9.84375 12.91667079925537 10.26345729827881 12.91667079925537 10.78125 L 12.91667079925537 11.71875 C 12.91667079925537 12.23654270172119 13.28974342346191 12.65625 13.75000381469727 12.65625 L 16.25000381469727 12.65625 L 16.25000381469727 15 C 16.25000381469727 15.51779270172119 16.62307739257813 15.9375 17.08333778381348 15.9375 L 17.91667175292969 15.9375 C 18.37693214416504 15.9375 18.7500057220459 15.51779270172119 18.7500057220459 15 L 18.7500057220459 12.65625 L 21.2500057220459 12.65625 C 21.71026611328125 12.65625 22.08333969116211 12.23654270172119 22.08333969116211 11.71875 L 22.08333969116211 10.78125 C 22.08333969116211 10.26345729827881 21.71026611328125 9.84375 21.2500057220459 9.84375 Z">
+			</path>
+		</svg>
+		<svg class="Icon_feather-heart" viewBox="2.323 4.497 25 21.348">
+			<path id="Icon_feather-heart" d="M 25.39532852172852 6.384556293487549 C 22.82622528076172 3.868163585662842 18.65960311889648 3.868163585662842 16.09049606323242 6.384556770324707 L 14.8227424621582 7.625715732574463 L 13.5549898147583 6.384556293487549 C 10.98553276062012 3.868998050689697 6.819615840911865 3.86899733543396 4.250157833099365 6.384555816650391 C 1.680698752403259 8.900114059448242 1.680699586868286 12.97864055633545 4.250158309936523 15.49419784545898 L 5.517910957336426 16.7353572845459 L 14.8227424621582 25.84499931335449 L 24.1275749206543 16.7353572845459 L 25.39532852172852 15.49419784545898 C 27.96564102172852 12.97898578643799 27.96564102172852 8.89976692199707 25.39533042907715 6.384555339813232 Z">
+			</path>
+		</svg>
+	</div>
+	<div id="user-info-right-group-detail">
+		<svg class="user-profile-white-right-box-detail">
+			<rect id="user-profile-white-right-box-detail" rx="10" ry="10" x="0" y="0" width="312" height="374">
+			</rect>
+		</svg>
+		<div id="user-profile-posts-group-detail">
+			<div id="user-info-total-posts-detail">
+				<span>22</span>
+			</div>
+			<div id="user-profile-posts-text-detail">
+				<span>Posts</span>
+			</div>
+		</div>
+		<div id="user-profile-blogs-group-detail">
+			<div id="user-info-total-blogs-detail">
+				<span>22</span>
+			</div>
+			<div id="user-profile-blogs-text">
+				<span>blogs</span>
+			</div>
+		</div>
+		<div id="User-profile-username">
+			<span><%- owner.firstname %> <%- owner.lastname %></span>
+		</div>
+		<div id="report-issue-detail">
+			<span>Report an Issue</span>
+		</div>
+		<div id="Female">
+			<span><%- owner.gender %></span>
+		</div>
+		<img id="user-image-circle-detail" src="data:image/<%= owner.image.contentType%>;base64,<%=owner.image.data.toString('base64')%>">
+		<div id="contact-group-detail">
+			<button type="button" class="fas fa-envelope dog-detail-icon dog-detail-icon-email" name="button"></button>
+			<button type="button" class="fas fa-paper-plane dog-detail-icon dog-detail-icon-message" name="button"></button>
+			<!-- <svg class="Icon_material-email" viewBox="3 6 30 24">
+				<path id="Icon_material-email" d="M 30 6 L 6 6 C 4.349999904632568 6 3.015000104904175 7.349999904632568 3.015000104904175 9 L 3 27 C 3 28.64999961853027 4.349999904632568 30 6 30 L 30 30 C 31.64999961853027 30 33 28.64999961853027 33 27 L 33 9 C 33 7.349999904632568 31.64999961853027 6 30 6 Z M 30 12 L 18 19.5 L 6 12 L 6 9 L 18 16.5 L 30 9 L 30 12 Z">
+				</path>
+			</svg>
+			<svg class="Icon_material-message" viewBox="3 3 30 30">
+				<path id="Icon_material-message" d="M 30 3 L 6 3 C 4.349999904632568 3 3.015000104904175 4.349999904632568 3.015000104904175 6 L 3 33 L 9 27 L 30 27 C 31.64999961853027 27 33 25.64999961853027 33 24 L 33 6 C 33 4.349999904632568 31.64999961853027 3 30 3 Z M 27 21 L 9 21 L 9 18 L 27 18 L 27 21 Z M 27 16.5 L 9 16.5 L 9 13.5 L 27 13.5 L 27 16.5 Z M 27 12 L 9 12 L 9 9 L 27 9 L 27 12 Z">
+				</path>
+			</svg> -->
+		</div>
+		<div id="owned_by">
+			<span>owned by</span>
+		</div>
+	</div>
+</div>
+
+<%- include('partials/footer') %>

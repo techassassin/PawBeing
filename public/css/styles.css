@@ -386,6 +386,8 @@ input[type="file"] {
   text-align: center;
   border-radius: 5px;
   border: none;
+  outline: none;
+  border: none;
 
 }
 
@@ -798,22 +800,19 @@ input[type="file"] {
 .contact-owner-btn {
   background-color: rgba(78,21,67,1);
   color: white;
-  stroke: rgba(112,112,112,1);
-  stroke-width: 1px;
-  stroke-linejoin: miter;
-  stroke-linecap: butt;
-  stroke-miterlimit: 4;
-  shape-rendering: auto;
 	position: absolute;
 	overflow: visible;
 	width: 80%;
 	height: 45px;
 	left: 0px;
 	top: 279px;
+  padding-top: 10px;
+  text-align: center;
   border: none;
   outline: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  text-decoration: none;
 }
 
 .contact-owner-btn:hover{
@@ -872,16 +871,17 @@ input[type="file"] {
 	left: 0px;
 	top: 0px;
 }
-#user-profile-grey-box {
-	fill: rgba(246,246,246,1);
-}
+
 .user-profile-grey-box {
+  background-color: rgba(246,246,246,1);
 	position: absolute;
 	overflow: visible;
 	width: 770px;
 	height: 568px;
 	left: 0px;
 	top: 96px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 #CONTACT_INFORMATION {
 	left: 20px;
@@ -927,15 +927,7 @@ input[type="file"] {
 	font-size: 14px;
 	color: rgba(0,0,0,1);
 }
-#username-box {
-	fill: rgba(255,255,255,1);
-	stroke: rgba(154,150,150,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
+
 .username-box {
 	position: absolute;
 	overflow: visible;
@@ -943,6 +935,9 @@ input[type="file"] {
 	height: 35px;
 	left: 0px;
 	top: 29px;
+  padding-left: 5px;
+  border: 1.5px solid rgba(154,150,150,1);
+  border-radius: 5px;
 }
 #email-group {
 	position: absolute;
@@ -966,15 +961,7 @@ input[type="file"] {
 	font-size: 14px;
 	color: rgba(0,0,0,1);
 }
-#email-box {
-	fill: rgba(154,150,150,1);
-	stroke: rgba(154,150,150,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
+
 .email-box {
 	position: absolute;
 	overflow: visible;
@@ -982,6 +969,9 @@ input[type="file"] {
 	height: 35px;
 	left: 0px;
 	top: 29px;
+  padding-left: 5px;
+  border: 1.5px solid rgba(154,150,150,1);
+  border-radius: 5px;
 }
 #user-info-row1 {
 	position: absolute;
@@ -1013,15 +1003,7 @@ input[type="file"] {
 	font-size: 14px;
 	color: rgba(0,0,0,1);
 }
-#firstname-box {
-	fill: rgba(255,255,255,1);
-	stroke: rgba(154,150,150,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
+
 .firstname-box {
 	position: absolute;
 	overflow: visible;
@@ -1029,6 +1011,10 @@ input[type="file"] {
 	height: 35px;
 	left: 0px;
 	top: 29px;
+  padding-left: 5px;
+  border: 1.5px solid rgba(154,150,150,1);
+  border-radius: 5px;
+
 }
 #lastname-group {
 	position: absolute;
@@ -1052,15 +1038,7 @@ input[type="file"] {
 	font-size: 14px;
 	color: rgba(0,0,0,1);
 }
-#lastname-box {
-	fill: rgba(255,255,255,1);
-	stroke: rgba(154,150,150,1);
-	stroke-width: 1px;
-	stroke-linejoin: miter;
-	stroke-linecap: butt;
-	stroke-miterlimit: 4;
-	shape-rendering: auto;
-}
+
 .lastname-box {
 	position: absolute;
 	overflow: visible;
@@ -1068,6 +1046,9 @@ input[type="file"] {
 	height: 35px;
 	left: 0px;
 	top: 29px;
+  padding-left: 5px;
+  border: 1.5px solid rgba(154,150,150,1);
+  border-radius: 5px;
 }
 #user-info-separator {
 	fill: transparent;
@@ -1316,6 +1297,33 @@ input[type="file"] {
   color: white;
 }
 
+.save-btn {
+  background-color: rgba(78,21,67,1);
+	position: absolute;
+	overflow: visible;
+  display: none;
+	width: 104px;
+	height: 30px;
+	left: 639px;
+	top: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+}
+
+#savemessage{
+  /* display: none; */
+  position: absolute;
+	width: 100%;
+	height: 30px;
+  text-align: right;
+  /* padding-left: 25px; */
+	top: 58px;
+  font-size: 12px;
+  color: GREY;
+
+}
 .cancel-btn {
   background-color: rgba(222,222,222,1);
 	position: absolute;
@@ -1456,7 +1464,7 @@ input[type="file"] {
 	font-family: Noto Sans;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 16px;
+	font-size: 12px;
 	color: rgba(154,150,150,1);
 }
 #change-password {
@@ -1470,7 +1478,7 @@ input[type="file"] {
 	font-family: Noto Sans;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 16px;
+	font-size: 12px;
 	color: rgba(154,150,150,1);
 }
 #report-issue {
@@ -1484,7 +1492,7 @@ input[type="file"] {
 	font-family: Noto Sans;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 16px;
+	font-size: 12px;
 	color: rgba(154,150,150,1);
 }
 #Female {
@@ -1501,11 +1509,439 @@ input[type="file"] {
 	font-size: 16px;
 	color: rgba(154,150,150);
 }
+.image-circle-group{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 56px;
+}
+
 #user-image-circle {
 	position: absolute;
 	width: 200px;
 	height: 200px;
-	left: 56px;
+	/* left: 56px; */
+  border-radius: 50%;
 	top: 0;
 	overflow: visible;
+}
+
+.upload-img-btn {
+  display: none;
+  position: absolute;
+  top: 62px;
+  padding: 0 14px 0 14px;
+  left: -25px;
+  font-size: 30px;
+  background-color: inherit;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+#user-image-circle:hover + .upload-img-btn, .upload-img-btn:hover {
+    display: inline-block;
+}
+
+
+/* #user-image-circle:hover + .upload-img-btn {
+  display: block;
+} */
+
+
+/* Dog Detail CSS */
+
+#dog-detail {
+	position: absolute;
+}
+#user-profile-grey-box-detail {
+	fill: rgba(246,246,246,1);
+}
+.user-profile-grey-box-detail {
+	position: absolute;
+	overflow: visible;
+	width: 770px;
+	height: 446px;
+	left: 48px;
+	top: 126px;
+}
+
+.modal-dog-img{
+	position: absolute;
+	overflow: visible;
+	width: 250px;
+	height: 300px;
+	left: 537px;
+	top: 237px;
+}
+#modal-dog-name {
+	left: 73px;
+	top: 141px;
+	position: absolute;
+	overflow: visible;
+	width: 190px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 22px;
+	color: rgba(154,150,150,1);
+}
+#Dog-details-group {
+	position: absolute;
+	width: 422px;
+	height: 290px;
+	left: 73px;
+	top: 221px;
+	overflow: visible;
+}
+#modal-Color {
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 70px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+}
+#modal-breed-name {
+	left: 0px;
+	top: 27px;
+	position: absolute;
+	overflow: visible;
+	width: 116px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+}
+#modal-gender {
+	left: 0px;
+	top: 54px;
+	position: absolute;
+	overflow: visible;
+	width: 93px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+}
+#modal-age {
+	left: 0px;
+	top: 82px;
+	position: absolute;
+	overflow: visible;
+	width: 52px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+}
+#modal-health {
+	left: 0px;
+	top: 109px;
+	position: absolute;
+	overflow: visible;
+	width: 111px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+}
+#modal-location {
+	left: 0px;
+	top: 136px;
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+}
+#modal-Description {
+	left: 0px;
+	top: 186px;
+	position: absolute;
+	overflow: visible;
+	width: 423px;
+	height: 104px;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+}
+#modal-date-posted {
+	left: 0px;
+	top: 163px;
+	position: absolute;
+	overflow: visible;
+	width: 100px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(0,0,0,1);
+}
+#shop-group {
+	position: absolute;
+	width: 83.05px;
+	height: 30px;
+	left: 704px;
+	top: 141px;
+	overflow: visible;
+}
+#Icon_awesome-cart-plus {
+	fill: rgba(0,0,0,1);
+}
+.Icon_awesome-cart-plus {
+	overflow: visible;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 53.05px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Icon_feather-heart {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 3px;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Icon_feather-heart {
+	overflow: visible;
+	position: absolute;
+	width: 28px;
+	height: 24.348px;
+	left: 0px;
+	top: 4.326px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#user-info-right-group-detail {
+	position: absolute;
+	width: 312px;
+	height: 466px;
+	left: 896px;
+	top: 100px;
+	overflow: visible;
+}
+#user-profile-white-right-box-detail {
+	fill: rgba(255,255,255,1);
+}
+.user-profile-white-right-box-detail {
+	filter: drop-shadow(20px 3px 10px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 347px;
+	height: 399px;
+	left: 0px;
+	top: 97px;
+}
+#user-profile-posts-group-detail {
+	position: absolute;
+	width: 40px;
+	height: 57px;
+	left: 64px;
+	top: 238px;
+	overflow: visible;
+}
+#user-info-total-posts-detail {
+	left: 8px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 25px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 22px;
+	color: rgba(0,0,0,1);
+}
+#user-profile-posts-text-detail {
+	left: 0px;
+	top: 35px;
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(154,150,150,1);
+}
+#user-profile-blogs-group-detail {
+	position: absolute;
+	width: 42px;
+	height: 57px;
+	left: 225px;
+	top: 242px;
+	overflow: visible;
+}
+#user-info-total-blogs-detail {
+	left: 9px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 25px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 22px;
+	color: rgba(0,0,0,1);
+}
+#user-profile-blogs-text-detail {
+	left: 0px;
+	top: 35px;
+	position: absolute;
+	overflow: visible;
+	width: 43px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(154,150,150,1);
+}
+#User-profile-username-detail {
+	left: 84px;
+	top: 326px;
+	position: absolute;
+	overflow: visible;
+	width: 146px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 22px;
+	color: rgba(120,112,112,1);
+}
+#report-issue-detail {
+	left: 98px;
+	top: 440px;
+	position: absolute;
+	overflow: visible;
+	width: 119px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(154,150,150,1);
+}
+#Female-detail {
+	left: 130px;
+	top: 353px;
+	position: absolute;
+	overflow: visible;
+	width: 55px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Noto Sans;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	color: rgba(154,150,150,1);
+}
+#user-image-circle-detail {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: 56px;
+	top: 20px;
+	overflow: visible;
+  border-radius: 50%;
+}
+#contact-group-detail {
+	position: absolute;
+	height: 30px;
+	top: 85px;
+	overflow: visible;
+}
+#owned_by {
+	left: 132px;
+	top: 311px;
+	position: absolute;
+	overflow: visible;
+	width: 52px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Noto Sans;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(154,150,150,1);
+}
+
+.dog-detail-icon{
+  border: none;
+  outline: none;
+  font-size: 30px;
+  background-color: transparent;
+  color: rgba(78,21,67,1);
+}
+
+
+
+.dog-detail-icon-email{
+  position: absolute;
+  left: 40px;
+}
+.dog-detail-icon-message{
+  position: absolute;
+  left: 230px;
+}
+
+.dog-detail-icon-email:hover{
+  color: #000;
+}
+
+.dog-detail-icon-message:hover{
+  color: #000;
+}
+
+.modal-btn{
+  padding-left: 0;
+  outline: none;
+  border: none;
+  font-size: 25px;
+  fill: rgba(78,21,67,1);
+  background-color: transparent;
 }

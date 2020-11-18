@@ -1,77 +1,52 @@
-(function (global) {
-    var imagesPerRow = 3,
-        chooseFiles,
-        columns,
-        previews;
+function editFunction() {
+    $("#profilefirstname").prop('disabled', false);
+    $("#profilelastname").prop('disabled', false);
+    $("#profileaddress").prop('disabled', false);
+    $("#profilecontact").prop('disabled', false);
+    $("#profilecity").prop('disabled', false);
+    $("#profilestate").prop('disabled', false);
+    $("#profiledob").prop('disabled', false);
+    $(".edit-btn").hide();
+    $(".save-btn").show();
+    $(".cancel-btn").show();
+}
+function saveFunction() {
+    $("#profilefirstname").prop('disabled', true);
+    $("#profilelastname").prop('disabled', true);
+    $("#profileaddress").prop('disabled', true);
+    $("#profilecontact").prop('disabled', true);
+    $("#profilecity").prop('disabled', true);
+    $("#profilestate").prop('disabled', true);
+    $("#profiledob").prop('disabled', true);
+    $(".edit-btn").show();
+    $(".save-btn").hide();
+    $(".cancel-btn").hide();
+    fetch('/quotes', {
+    method: 'put',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: 'Darth Vadar',
+      quote: 'I find your lack of faith disturbing.'
+    })
+  })
+}
 
-    function windowLoadHandler() {
-        global.removeEventListener("load", windowLoadHandler);
-        chooseFiles = document.getElementById("chooseFiles");
-        columns = document.getElementById("columns");
-        previews = document.getElementById("previews");
+function cancelFunction() {
+  $("#profilefirstname").prop('disabled', true);
+  $("#profilelastname").prop('disabled', true);
+  $("#profileaddress").prop('disabled', true);
+  $("#profilecontact").prop('disabled', true);
+  $("#profilecity").prop('disabled', true);
+  $("#profilestate").prop('disabled', true);
+  $("#profiledob").prop('disabled', true);
+  $(".edit-btn").show();
+  $(".save-btn").hide();
+  $(".cancel-btn").hide();
+}
 
-        var row = columns.insertRow(),
-            header,
-            i;
+const update = document.querySelector('#update-button')
 
-        for (i = 0; i < imagesPerRow; i += 1) {
-            header = row.insertCell();
-            header.style.width = (100 / imagesPerRow) + "%";
-        }
-
-        chooseFiles.addEventListener("change", PreviewImages, false);
-    }
-
-    function PreviewImages() {
-        var row;
-
-        Array.prototype.forEach.call(chooseFiles.files, function (file, index) {
-            var cindex = index % imagesPerRow,
-                oFReader = new FileReader(),
-                cell,
-                image;
-
-            if (cindex === 0) {
-                row = previews.insertRow(Math.ceil(index / imagesPerRow));
-            }
-
-            image = document.createElement("img");
-            image.id = "img_" + index;
-            image.style.width = "100%";
-            image.style.height = "auto";
-            cell = row.insertCell(cindex);
-            cell.appendChild(image);
-
-            oFReader.addEventListener("load", function (evt) {
-                console.log("loaded");
-                image.src = evt.target.result;
-                this.removeEventListener("load");
-            }, false);
-
-            oFReader.readAsDataURL(file);
-        });
-    }
-
-    global.addEventListener("load", windowLoadHandler, false);
-}(window));
-
-
-$(document).ready(function() {
-        let imagesPreview = function(input, placeToInsertImagePreview) {
-          if (input.files) {
-            let filesAmount = input.files.length;
-            for (i = 0; i < filesAmount; i++) {
-              let reader = new FileReader();
-              reader.onload = function(event) {
-                $($.parseHTML("<img>"))
-                  .attr("src", event.target.result)
-                  .appendTo(placeToInsertImagePreview);
-              };
-              reader.readAsDataURL(input.files[i]);
-            }
-          }
-        };
-        $("#input-files").on("change", function() {
-          imagesPreview(this, "div.preview-images");
-        });
-      });
+update.addEventListener('click', _ => {
+  alert("Here");
+  // Send PUT Request here
+})

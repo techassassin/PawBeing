@@ -9,8 +9,6 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
-
-
 var fs = require('fs');
 var path = require('path');
 var multer = require('multer');
@@ -32,6 +30,15 @@ var dogAdoptionstorage = multer.diskStorage({
   }
 });
 
+var userimagestorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'userimguploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+});
+
 var upload = multer({
   storage: storage
 });
@@ -40,9 +47,13 @@ var dogadoptionupload = multer({
   storage: dogAdoptionstorage
 });
 
+var userimageupload = multer({
+  storage: userimagestorage
+});
+
 
 const app = express();
-
+app.use(bodyParser.json());
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
@@ -58,7 +69,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0.dbo9h.mongodb.net/PostsDB", {useNewUrlParser : true});
+mongoose.connect("mongodb+srv://admin:admin@cluster0.dbo9h.mongodb.net/PostsDB", {
+  useNewUrlParser: true
+});
 
 // mongoose.connect("mongodb://localhost:27017/PawBeingDB", {
 //   useNewUrlParser: true
@@ -69,6 +82,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   firstname: String,
   lastname: String,
+  gender: String,
   dob: {
     type: Date,
     default: Date.now
@@ -78,7 +92,14 @@ const userSchema = new mongoose.Schema({
   },
   password: String,
   googleId: String,
-  secret: String
+  secret: String,
+  image: {
+    "data": Buffer,
+    "contentType": String,
+  },
+  city: String,
+  state: String,
+  address: String,
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -141,13 +162,14 @@ var adoptionSchema = new mongoose.Schema({
     "data": Buffer,
     "contentType": String,
   },
-  "isGoodWith":{
-		"otherDogs": String,
-		"otherCats": String,
+  "isGoodWith": {
+    "otherDogs": String,
+    "otherCats": String,
     "Childrens": String,
-	},
+  },
   "otherDetails": String,
   "PostTime": Date,
+  "ownerid": String,
   "Status": String,
   "AdoptionTime": Date,
   "AdoptedBy": String,
@@ -165,6 +187,7 @@ app.get('/blogs', (req, res) => {
       console.log(err);
     } else {
       res.render('blogs', {
+        userdetail: req.user,
         items: items
       });
     }
@@ -173,7 +196,34 @@ app.get('/blogs', (req, res) => {
 
 app.get('/aboutdogadoption', (req, res) => {
   res.render('aboutdogadoption')
+
 });
+
+// /dog-details
+
+
+// app.get('/dog-details/:requestid', (req, res) => {
+//   requesteddogid = req.params.requestid;
+//   dogModel.findOne({_id: requesteddogid}, function(err, dogdetail) {
+//     res.render("dog-detail", {
+//       items: dogdetail,
+//       owner: User.findById
+//     });
+//   });
+// });
+
+app.get('/dog-details/:requestid', (req, res) => {
+  requesteddogid = req.params.requestid;
+  dogModel.findOne({_id: requesteddogid}, function(err, dogdetail) {
+    User.findOne({_id: dogdetail.ownerid}, function(err, ownerdetail) {
+      res.render("dog-detail", {
+        items: dogdetail,
+        owner: ownerdetail,
+      });
+    });
+  });
+});
+
 
 app.post('/dogadoptionpost', dogadoptionupload.single('image'), (req, res, next) => {
   var obj = {
@@ -196,6 +246,7 @@ app.post('/dogadoptionpost', dogadoptionupload.single('image'), (req, res, next)
     },
     otherDetails: req.body.otherdetails,
     PostTime: new Date().toLocaleDateString(),
+    ownerid: req.user._id,
     Status: "ReadyForAdoption",
     AdoptionTime: "",
     AdoptedBy: "",
@@ -210,7 +261,26 @@ app.post('/dogadoptionpost', dogadoptionupload.single('image'), (req, res, next)
   });
 });
 
-app.post('/img', upload.single('image'), (req, res, next) => {
+
+app.post('/userimgupload/:id', userimageupload.single('image'), (req, res, next) => {
+  console.log("Here: "+req.params.id);
+  var obj = {
+    image: {
+      data: fs.readFileSync(path.join(__dirname + '/userimguploads/' + req.file.filename)),
+      contentType: 'image/png',
+    },
+  };
+  User.findByIdAndUpdate(req.params.id, {$set:obj}, (err, item) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect('/profile');
+    }
+  });
+});
+
+
+app.post('/blog', upload.single('image'), (req, res, next) => {
   // Uploading the image
   console.log("In blog " + req.body.name);
   var obj = {
@@ -239,7 +309,11 @@ app.get("/", function(req, res) {
 });
 
 app.get("/profile", function(req, res) {
-  res.render("profile");
+  // console.log("User image: "+req.user.image.contentType);
+  console.log("User image: "+req.user);
+  res.render("profile", {
+    userdetail: req.user,
+  });
 });
 
 // app.get("/auth/google",
@@ -266,7 +340,6 @@ app.get("/register", function(req, res) {
 });
 
 app.get("/secrets", function(req, res) {
-
   User.find({
     "secret": {
       $ne: null
@@ -276,13 +349,14 @@ app.get("/secrets", function(req, res) {
       console.log(err);
     } else {
       if (foundUsers) {
+
         dogModel.find({}, (err, items) => {
           if (err) {
             console.log(err);
           } else {
             res.render('secrets', {
               items: items,
-                usersWithSecrets: foundUsers
+              userdetail: req.user,
             });
           }
         });
@@ -328,11 +402,15 @@ app.get("/logout", function(req, res) {
 });
 
 app.post("/register", function(req, res) {
-
+  // console.log("lastname "+req.body.firstname);
   User.register({
-    username: req.body.username
+    username: req.body.username,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    gender: req.body.gender,
+    dob: req.body.dob,
+    contact:req.body.conact
   }, req.body.password, function(err, user) {
-    // console.log(username+" "+req.body.password);
     if (err) {
       console.log(err);
       res.redirect("/register");
@@ -344,6 +422,23 @@ app.post("/register", function(req, res) {
   });
 
 });
+
+app.post("/profileedit/:id", function(request, response) {
+  console.log("id: "+request.params.id);
+  User.findByIdAndUpdate(request.params.id, {$set: request.body}, function(err, user) {
+    if (err) {
+      console.log(err);
+      response.redirect("/register");
+    } else {
+      // passport.authenticate("local")(request, response, function() {
+        response.redirect("/profile");
+        // response.render('profile', {user: request.user});
+      // });
+    }
+  });
+
+});
+
 
 app.post("/login", function(req, res) {
 
@@ -358,6 +453,7 @@ app.post("/login", function(req, res) {
     } else {
       passport.authenticate("local")(req, res, function() {
         res.redirect("/secrets");
+        console.log("Checking User: "+req.user)
       });
     }
   });
@@ -366,6 +462,6 @@ app.post("/login", function(req, res) {
 
 
 
-app.listen(process.env.PORT || 3001, function(){
+app.listen(process.env.PORT || 3001, function() {
   console.log("Server Started Successfully");
 });
